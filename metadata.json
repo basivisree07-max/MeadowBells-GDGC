@@ -1,0 +1,6 @@
+{
+  "name": "Meadowbell - Hollyoak's Plucky Sprout Squad",
+  "description": "Sunny hand-painted anime landing hero for animated kids' farming series Hollyoak's Plucky Sprout Squad by Meadowbell.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

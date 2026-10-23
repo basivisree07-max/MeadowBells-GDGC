@@ -1,0 +1,33 @@
+{
+  "currency": "INR",
+  "paintings": [
+    {
+      "id": "painting-001",
+      "title": "Placeholder painting",
+      "artist": "Studio artist",
+      "description": "Replace this clearly marked placeholder with your painting details.",
+      "price": 0,
+      "imageUrl": "/images/placeholder.jpg",
+      "status": "available"
+    }
+  ],
+  "potteryItems": [{ "id": "item-001", "name": "Placeholder pottery item" }],
+  "glazes": [{ "id": "glaze-001", "name": "Placeholder glaze" }],
+  "mural": {
+    "ratePerSqFt": 0,
+    "designs": [
+      {
+        "id": "mural-example",
+        "name": "Garden mural",
+        "style": "Botanical folk art",
+        "description": "A hand-painted garden inspired by local folk art.",
+        "imageUrl": "/images/placeholder.jpg"
+      }
+    ]
+  },
+  "studioAccount": {
+    "email": "replace-with-private-studio-email",
+    "password": "replace-with-private-password",
+    "role": "admin"
+  }
+}

@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: meadowbell
+      POSTGRES_USER: meadowbell
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes:
+      - meadowbell-data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U meadowbell -d meadowbell"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://meadowbell:${POSTGRES_PASSWORD}@db:5432/meadowbell
+      SESSION_SECRET: ${SESSION_SECRET:?Set SESSION_SECRET in .env}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      API_PORT: 4000
+      NODE_ENV: production
+    ports:
+      - "${APP_PORT:-8080}:4000"
+    volumes:
+      - ./seed/seed.json:/app/seed/seed.json:ro
+
+volumes:
+  meadowbell-data:
